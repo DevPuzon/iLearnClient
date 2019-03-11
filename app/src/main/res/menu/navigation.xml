@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_activity"
+        android:icon="@drawable/ic_activity"
+        android:title="Activity" />
+
+    <item
+        android:id="@+id/nav_status"
+        android:icon="@drawable/ic_status"
+        android:title="Status" />
+
+    <item
+        android:id="@+id/nav_leaderboard"
+        android:icon="@drawable/ic_leaderboard"
+        android:title="Leaderboard" />
+
+    <item
+        android:id="@+id/nav_note"
+        android:icon="@drawable/ic_note"
+        android:title="Note" />
+
+    <item
+        android:id="@+id/nav_account_settings"
+        android:icon="@drawable/ic_account_settings"
+        android:title="Account Settings" />
+</menu>

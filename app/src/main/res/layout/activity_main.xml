@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" tools:context=".Bin.MainActivity">
+    <EditText android:id="@+id/address" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="dstAddress" android:text="ip" />
+    <EditText android:id="@+id/port" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="dstPort" android:text="port" />
+    <Button android:id="@+id/connect" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Connect..." />
+    - <EditText android:id="@+id/editText1" android:layout_width="match_parent" android:layout_height="wrap_content" android:ems="10" android:hint="Input Data">
+    <requestFocus />
+</EditText>
+    <Button android:id="@+id/button1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="send" android:onClick="send" />
+    <Button android:id="@+id/button2" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Restart" android:onClick="onClick" />
+    <TextView android:id="@+id/response" android:layout_width="match_parent" android:layout_height="match_parent" android:text="" />
+</LinearLayout>
