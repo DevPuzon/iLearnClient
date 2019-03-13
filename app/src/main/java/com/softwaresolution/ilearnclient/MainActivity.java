@@ -117,7 +117,6 @@ public class MainActivity extends Activity {
                         message += Character.toString((char) num);
                     } catch (Exception classNot) {
                     }
-
                 } while (!message.equals("bye"));
 
                 try {

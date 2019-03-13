@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,7 +33,7 @@ public class MainActivity extends Activity {
     private OnListener listener;
     private static boolean flag = true;
     Socket socket = null;
-
+    BufferedReader in1;
     public interface OnListener {
         void listener(String text);
     }
@@ -65,9 +66,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                myClientTask = new ClientTask(editTextAddress.getText()
-                        .toString(), Integer.parseInt(editTextPort.getText()
-                        .toString()));
+                myClientTask = new ClientTask("192.168.0.105", 100);
                 myClientTask.execute();
             }
         });
@@ -104,12 +103,13 @@ public class MainActivity extends Activity {
                 //out1.print("Hello server!");
                 out1.flush();
 
-                BufferedReader in1 = new BufferedReader(new InputStreamReader(
+                in1 = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
                 do {
                     try {
                         if (!in1.ready()) {
                             if (message != null) {
+//                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                                 MainActivity.handler.obtainMessage(0, 0, -1,
                                         "Server: " + message).sendToTarget();
                                 message = "";
@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
         // TODO Auto-generated method stub
         try {
             if (listener != null)
-                listener.listener("bye");
+                listener.listener(Server.getIpAddress());
             socket.close();
         } catch (Exception e) {
             // TODO: handle exception
@@ -198,7 +198,7 @@ public class MainActivity extends Activity {
         // TODO Auto-generated method stub
         try {
             if (listener != null)
-                listener.listener("bye");
+                listener.listener(Server.getIpAddress());
             socket.close();
         } catch (Exception e) {
             // TODO: handle exception

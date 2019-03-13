@@ -13,12 +13,10 @@ public class Client extends AsyncTask<Void, Void, String> {
     String dstAddress;
     int dstPort;
     String response = "";
-    TextView textResponse;
 
-    Client(String addr, int port, TextView textResponse) {
+    Client(String addr, int port) {
         dstAddress = addr;
         dstPort = port;
-        this.textResponse = textResponse;
     }
 
     @Override
@@ -67,7 +65,6 @@ public class Client extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        textResponse.setText(response);
         super.onPostExecute(result);
     }
 

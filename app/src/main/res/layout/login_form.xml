@@ -19,15 +19,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-            <com.rengwuxian.materialedittext.MaterialEditText
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="IP Address"
-                app:met_floatingLabelText="IP Address"
-                android:inputType="number"
-                android:digits="0123456789."
-                style="@style/MaterialEditText"/>
+                android:layout_height="wrap_content">
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/txt_ip"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:hint="IP Address"
+                    app:met_floatingLabelText="IP Address"
+                    android:inputType="number"
+                    android:digits="0123456789."
+                    style="@style/MaterialEditText"/>
+                <Button
+                    android:id="@+id/bttn_check"
+                    android:background="@drawable/bttn_circle"
+                    android:drawableTop="@drawable/ic_check"
+                    android:textColor="#FFFFFF"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:paddingTop="4dp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/txt_name"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,6 +50,7 @@
                 app:met_floatingLabelText="Username"
                 style="@style/MaterialEditText" />
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/txt_pass"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
