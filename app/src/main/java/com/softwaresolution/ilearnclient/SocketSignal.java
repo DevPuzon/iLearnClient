@@ -3,6 +3,7 @@ package com.softwaresolution.ilearnclient;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
+import android.os.Debug;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -16,11 +17,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.List;
 
-public  class SocketSignal extends AsyncTask<String, String, String> implements
+public class SocketSignal extends AsyncTask<String, String, String> implements
         OnListener {
 
-        public String message = "server in";
-        public String getSignal = "server in";
+    private static final String TAG = "SocketSignal";
+    public String message = "server in";
+        public static String getSignal = "server in";
         private static String kq = "";
         String tag = "Login form";
 
@@ -31,18 +33,10 @@ public  class SocketSignal extends AsyncTask<String, String, String> implements
 
         public static OnListener listener;
         public static boolean flag = true;
-        public  void addListener(OnListener listener) {
-            this.listener = listener;
+        public static void addListener(OnListener listener1) {
+            listener = listener1;
         }
 
-        public static Handler handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                if (flag) {
-                    kq += msg.obj.toString() + "\r\n";
-                }
-            }
-        };
         public SocketSignal(String addr, int port) {
             dstAddress = addr;
             dstPort = port;
@@ -52,7 +46,6 @@ public  class SocketSignal extends AsyncTask<String, String, String> implements
         protected void onProgressUpdate(String... values) {
             // TODO Auto-generated method stub
             super.onProgressUpdate(values);
-
         }
 
         @Override
@@ -67,14 +60,16 @@ public  class SocketSignal extends AsyncTask<String, String, String> implements
 
                 BufferedReader in1 = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
-
-                do {
+                while (true){
                     try {
                         if (!in1.ready()) {
                             if (message != null) {
-//                                LoginForm.handler.obtainMessage(0, 0, -1,
-//                                         message).sendToTarget();
                                 getSignal = message;
+                                if(getSignal.split("/")[0].equals("reply")){
+                                    Log.d(TAG,getSignal.split("/")[1]);
+                                    MainBottom.showMessage.obtainMessage(0, 0, -1,
+                                            getSignal.split("/")[1]).sendToTarget();
+                                }
                                 message = "";
                             }
                         }
@@ -82,15 +77,6 @@ public  class SocketSignal extends AsyncTask<String, String, String> implements
                         message += Character.toString((char) num);
                     } catch (Exception classNot) {
                     }
-
-                } while (!message.equals("bye"));
-
-                try {
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } finally {
-                    socket.close();
                 }
 
             } catch (IOException e) {
@@ -122,13 +108,7 @@ public  class SocketSignal extends AsyncTask<String, String, String> implements
         public static void sendMessage(String msg) {
             try {
                 out1.print(msg);
-                out1.flush();
-//                if (!msg.equals("bye"))
-//                    MainActivity.handler.obtainMessage(0, 0, -1, "Me: " + msg)
-//                            .sendToTarget();
-//                else
-//                    MainActivity.handler.obtainMessage(0, 0, -1,
-//                            "Ngắt kết nối!").sendToTarget();
+                out1.flush();;
             } catch (Exception ioException) {
                 ioException.printStackTrace();
             }

@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
     <GridView
         android:id="@+id/grid_activty"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="2"></GridView>

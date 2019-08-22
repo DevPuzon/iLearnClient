@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.softwaresolution.ilearnclient">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:allowBackup="true"
@@ -22,8 +27,23 @@
             android:name=".MainBottom"
             android:label="@string/app_name" />
         <activity
+            android:name=".Activity.SubTopic"
+            android:label="Select subtopic" />
+        <activity
             android:name=".SignUp"
             android:label="Sign Up" />
+        <activity
+            android:name=".Activity.Quiz"
+            android:label="Quiz" />
+        <activity
+            android:name=".Note.NoteText"
+            android:label="Note" />
+        <activity
+            android:name=".Activity.PreviewResult"
+            android:label="Preview result" />
+        <activity
+            android:name=".Note.TeacherRemText"
+            android:label="Reminder" />
     </application>
 
 </manifest>

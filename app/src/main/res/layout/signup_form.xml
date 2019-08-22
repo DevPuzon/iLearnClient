@@ -20,6 +20,7 @@
             android:orientation="vertical"
             android:padding="10dp">
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editxt_username"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,20 +28,31 @@
                 app:met_floatingLabelText="Username"
                 style="@style/MaterialEditText" />
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editxt_password"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 app:met_floatingLabelText="Password"
                 style="@style/MaterialEditText"
-                android:inputType="number"/>
+                android:inputType="textPassword"/>
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editxt_repassword"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Re-type Password"
+                app:met_floatingLabelText="Re-type Password"
+                style="@style/MaterialEditText"
+                android:inputType="textPassword"/>
             <Button
+                android:id="@+id/bttn_create"
                 android:text="Sign Up"
                 android:layout_marginTop="25dp"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bttn_round"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
